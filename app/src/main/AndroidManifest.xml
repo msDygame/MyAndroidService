@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dygame.myandroidservice" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <meta-data android:value="tel" android:name="cdma-13366350377" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.dygame.myandroidservice.MyService" >
+        </service>
+        <meta-data android:value="029" android:name="CHANNEL" />
+    </application>
+    <receiver android:name="MyReceiver" >
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />  <!-- 開機廣播 -->
+            <action android:name="com.dygame.myandroidservice.broadcast" />
+            <action android:name="com.dygame.nonuiandroidservice.broadcast" />
+        </intent-filter>
+    </receiver>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>
